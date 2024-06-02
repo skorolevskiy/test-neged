@@ -31,12 +31,79 @@ export async function POST(req: NextRequest): Promise<Response> {
 			points = User.points;
 		}
 
+		const randomNumber = weighted_random_number();
+
 		if (spins > 0) {
-			
+			buttonText = (spins - 1) + " free spins";
+			switch (randomNumber) {
+				case 1:
+					await updatePointsSpins(fid, 5);
+					spins--;
+					return getResponse(ResponseType.IMAGE_5);
+				case 2:
+					await updatePointsSpins(fid, 25);
+					spins--;
+					return getResponse(ResponseType.IMAGE_25);
+				case 3:
+					await updatePointsSpins(fid, 50);
+					spins--;
+					return getResponse(ResponseType.IMAGE_50);
+				case 4:
+					await updatePointsSpins(fid, 100);
+					spins--;
+					return getResponse(ResponseType.IMAGE_100);
+				case 5:
+					await updatePointsSpins(fid, 150);
+					spins--;
+					return getResponse(ResponseType.IMAGE_150);
+				case 6:
+					await updatePointsSpins(fid, 200);
+					spins--;
+					return getResponse(ResponseType.IMAGE_200);
+				case 7:
+					await updatePointsSpins(fid, 250);
+					spins--;
+					return getResponse(ResponseType.IMAGE_250);
+				case 8:
+					await updatePointsSpins(fid, 500);
+					spins--;
+					return getResponse(ResponseType.IMAGE_500);
 			}
-		 else {
+		} else {
+			if (points > 100) {
+				buttonText = "Spin -100 points";
+				points = points - 100;
+				switch (randomNumber) {
+					case 1:
+						await updatePoints(fid, -95);
+						return getResponse(ResponseType.IMAGE_5);
+					case 2:
+						await updatePoints(fid, -75);
+						return getResponse(ResponseType.IMAGE_25);
+					case 3:
+						await updatePoints(fid, -50);
+						return getResponse(ResponseType.IMAGE_50);
+					case 4:
+						await updatePoints(fid, 0);
+						return getResponse(ResponseType.IMAGE_100);
+					case 5:
+						await updatePoints(fid, 50);
+						return getResponse(ResponseType.IMAGE_150);
+					case 6:
+						await updatePoints(fid, 100);
+						return getResponse(ResponseType.IMAGE_200);
+					case 7:
+						await updatePoints(fid, 150);
+						return getResponse(ResponseType.IMAGE_250);
+					case 8:
+						await updatePoints(fid, 400);
+						return getResponse(ResponseType.IMAGE_500);
+				}
+			} else {
 				return getResponse(ResponseType.SPIN_OUT);
 			}
+			
+		}
 
 		return getResponse(ResponseType.SPIN_OUT);
 		// Check if user has minted before
@@ -56,6 +123,14 @@ export async function POST(req: NextRequest): Promise<Response> {
 
 enum ResponseType {
 	SUCCESS,
+	IMAGE_5,
+	IMAGE_25,
+	IMAGE_50,
+	IMAGE_100,
+	IMAGE_150,
+	IMAGE_200,
+	IMAGE_250,
+	IMAGE_500,
 	ALREADY_MINTED,
 	NO_ADDRESS,
 	ERROR,
@@ -64,11 +139,19 @@ enum ResponseType {
 
 function getResponse(type: ResponseType) {
 	const IMAGE = {
-		[ResponseType.SUCCESS]: 'status/success.webp',
-		[ResponseType.ALREADY_MINTED]: 'status/already-minted.png',
-		[ResponseType.NO_ADDRESS]: 'status/no-address.png',
-		[ResponseType.ERROR]: 'status/error.png',
-		[ResponseType.SPIN_OUT]: 'status/spin-out.png'
+		[ResponseType.SUCCESS]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/success.webp',
+		[ResponseType.IMAGE_5]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/5.gif',
+		[ResponseType.IMAGE_25]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/25.gif',
+		[ResponseType.IMAGE_50]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/50.gif',
+		[ResponseType.IMAGE_100]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/100.gif',
+		[ResponseType.IMAGE_150]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/150.gif',
+		[ResponseType.IMAGE_200]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/200.gif',
+		[ResponseType.IMAGE_250]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/250.gif',
+		[ResponseType.IMAGE_500]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/500.gif',
+		[ResponseType.ALREADY_MINTED]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/already-minted.png',
+		[ResponseType.NO_ADDRESS]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/no-address.png',
+		[ResponseType.ERROR]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/error.png',
+		[ResponseType.SPIN_OUT]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/spin-out.png'
 	}[type];
 	const shouldRetry =
 	  type === ResponseType.SPIN_OUT;
