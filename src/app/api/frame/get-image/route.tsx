@@ -57,7 +57,7 @@ export async function GET(request: Request) {
 						fontFamily: 'Geist, GeistSans, Inter, "Material Icons"',
 						fontSize: 40,
 						color: 'black',
-						background: '#0052FF',
+						background: '#1e293b',
 						width: '100%',
 						height: '100%',
 						padding: '50px 50px',
@@ -171,12 +171,12 @@ export async function GET(request: Request) {
 							whiteSpace: 'pre-wrap',
 						}}
 					>
-						<p>Build by PILL, dev @eat</p>
+						<p>Build by Neged, dev @eat</p>
 						<img
 							alt="pill"
 							width="64"
 							height="64"
-							src={SITE_URL + '/status/pill.png'}
+							src={SITE_URL + '/status/logo.jpeg'}
 							/>
 					</div>
 				</div>
