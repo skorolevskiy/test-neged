@@ -39,16 +39,16 @@ export async function GET(request: Request) {
 		const topPlayers: Player[] = await getTopPlayers();
 
 		const prizeArray = [
-			{ prize: '1,000,000 $negeD' },
-			{ prize: '250,000 $negeD' },
-			{ prize: '100,000 $negeD' },
-			{ prize: '75,000 $negeD' },
-			{ prize: '50,000 $negeD' },
-			{ prize: '40,000 $negeD' },
-			{ prize: '30,000 $negeD' },
-			{ prize: '20,000 $negeD' },
-			{ prize: '10,000 $negeD' },
-			{ prize: '5,000 $negeD' }
+			{ prize: '1m $negeD' },
+			{ prize: '250k $negeD' },
+			{ prize: '100k $negeD' },
+			{ prize: '75k $negeD' },
+			{ prize: '50k $negeD' },
+			{ prize: '40k $negeD' },
+			{ prize: '30k $negeD' },
+			{ prize: '20k $negeD' },
+			{ prize: '10k $negeD' },
+			{ prize: '5k $negeD' }
 		  ];
 
 		return new ImageResponse(
