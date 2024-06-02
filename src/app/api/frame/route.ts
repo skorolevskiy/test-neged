@@ -70,7 +70,6 @@ export async function POST(req: NextRequest): Promise<Response> {
 
 		if (lastSpin !== today) {
 			await updateDate(fid_new);
-			await updateRef(refFid);
 			spins = 2;
 		}
 
