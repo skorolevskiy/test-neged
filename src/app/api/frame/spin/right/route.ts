@@ -180,23 +180,32 @@ async function validateFrameRequest(data: string | undefined) {
 }
 
 function getRandomNumber(): number {
-    const weights = [15, 30, 25, 10, 10, 5, 5];
-    const cumulativeWeights: any = [];
+    // Определяем интервалы вероятностей
+    const intervals = [
+        { number: 1, probability: 15 },
+        { number: 2, probability: 25 },
+        { number: 3, probability: 25 },
+        { number: 4, probability: 15 },
+        { number: 5, probability: 10 },
+        { number: 6, probability: 5 },
+        { number: 7, probability: 5 },
+    ];
 
-    // Заполняем массив кумулятивных весов
-    weights.reduce((acc, weight, index) => {
-        cumulativeWeights[index] = acc + weight;
-        return cumulativeWeights[index];
-    }, 0);
+    // Вычисляем суммарную вероятность
+    const totalProbability = intervals.reduce((sum, interval) => sum + interval.probability, 0);
 
-    const random = Math.random() * cumulativeWeights[cumulativeWeights.length - 1];
+    // Генерируем случайное число от 0 до totalProbability
+    const random = Math.random() * totalProbability;
 
-    // Определяем в какой диапазон попадает случайное число
-    for (let i = 0; i < cumulativeWeights.length; i++) {
-        if (random < cumulativeWeights[i]) {
-            return i + 1;
+    // Определяем в какой интервал попадает случайное число
+    let accumulatedProbability = 0;
+    for (const interval of intervals) {
+        accumulatedProbability += interval.probability;
+        if (random < accumulatedProbability) {
+            return interval.number;
         }
     }
 
-    return 1; // На случай если что-то пойдет не так, возвращаем 1
+    // На случай если что-то пойдет не так, возвращаем последнее число
+    return intervals[intervals.length - 1].number;
 }
