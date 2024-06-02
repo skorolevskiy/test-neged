@@ -14,9 +14,9 @@ interface Player {
 }
 
 export async function GET(request: Request) {
-	const fontData = await fetch(
-		new URL(SITE_URL + '/assets/GeistMonoRegular.ttf', import.meta.url),
-	  ).then((res) => res.arrayBuffer());
+	// const fontData = await fetch(
+	// 	new URL(SITE_URL + '/assets/GeistMonoRegular.ttf', import.meta.url),
+	//   ).then((res) => res.arrayBuffer());
 
 	try {
 		const { searchParams } = new URL(request.url);
@@ -38,29 +38,29 @@ export async function GET(request: Request) {
 		const topPlayers: Player[] = await getTopPlayers();
 
 		const prizeArray = [
-			{ prize: '1m $negeD' },
-			{ prize: '250k $negeD' },
-			{ prize: '100k $negeD' },
-			{ prize: '75k $negeD' },
-			{ prize: '50k $negeD' },
-			{ prize: '40k $negeD' },
-			{ prize: '30k $negeD' },
-			{ prize: '20k $negeD' },
-			{ prize: '10k $negeD' },
-			{ prize: '5k $negeD' }
+			{ prize: '1 000 000' },
+			{ prize: '250 000' },
+			{ prize: '100 000' },
+			{ prize: '75 000' },
+			{ prize: '50 000' },
+			{ prize: '40 000' },
+			{ prize: '30 000' },
+			{ prize: '20 000' },
+			{ prize: '10 000' },
+			{ prize: '5 000' }
 		  ];
 
 		return new ImageResponse(
 			(
 				<div
 					style={{
-						fontFamily: 'Geist, GeistSans, Inter, "Material Icons"',
+						fontFamily: 'Arial, Inter, "Material Icons"',
 						fontSize: 40,
 						color: 'black',
 						background: '#1e293b',
 						width: '100%',
 						height: '100%',
-						padding: '50px 50px',
+						padding: '40px 50px',
 						textAlign: 'center',
 						display: 'flex',
 						justifyContent: 'flex-start',
@@ -71,7 +71,7 @@ export async function GET(request: Request) {
 				>
 					<div
 						style={{
-							fontFamily: 'Geist, GeistSans, Inter, "Material Icons"',
+							fontFamily: 'Arial, Inter, "Material Icons"',
 							fontSize: 40,
 							fontStyle: 'normal',
 							fontWeight: 700,
@@ -88,66 +88,68 @@ export async function GET(request: Request) {
 						<div tw="flex bg-white shadow-lg rounded-lg my-6">
 							<table tw="w-full flex flex-col rounded-lg">
 								<thead tw="flex">
-									<tr tw="flex w-full bg-gray-200 text-gray-600 uppercase text-2xl leading-normal rounded-lg">
-										<th tw="w-1/12 py-3 px-6 text-left">#</th>
-										<th tw="w-1/6 py-3 px-6 text-left">Fid</th>
-										<th tw="w-1/6 py-3 px-6 text-left">Nickname</th>
-										<th tw="w-1/12 py-3 px-6 text-left">Ref.</th>
-										<th tw="w-1/4 py-3 px-6 text-left">Prize</th>
-										<th tw="flex-1 py-3 px-6 text-black text-center">Points</th>
+									<tr tw="flex w-full bg-purple-100 text-gray-600 uppercase text-2xl leading-normal rounded-lg">
+										<th tw="w-1/12 py-3 px-3 text-left">#</th>
+										<th tw="w-1/8 py-3 px-3 text-left">Fid</th>
+										<th tw="w-1/3 py-3 px-3 text-left">Nickname</th>
+										<th tw="w-1/12 py-3 px-3 text-left">Ref.</th>
+										<th tw="w-1/5 py-3 px-3 text-left">Prize</th>
+										<th tw="flex-1 py-3 px-3 text-black text-center">Points</th>
 									</tr>
 								</thead>
 								<tbody tw="flex w-full flex-col text-gray-600 text-2xl font-light">
 									{topPlayers.map((player, index) => (
 										<tr  key={index + 1} tw="flex w-full border-2 border-gray-200 bg-gray-50">
-											<td tw="w-1/12 py-3 px-6 text-left">
+											<td tw="w-1/12 py-2 px-3 text-left">
 												<span tw="font-medium">{index + 1}</span>
 											</td>
-											<td tw="w-1/6 py-3 px-6 text-left">
+											<td tw="w-1/8 py-2 px-3 text-left">
 												<span tw="font-medium">{player.fid}</span>
 											</td>
-											<td tw="w-1/6 py-3 px-6 text-left">
+											<td tw="w-1/3 py-2 px-3 text-left">
 												<span>@{(player.username).replace(/"/g, '')}</span>
 											</td>
-											<td tw="w-1/12 py-3 px-6 text-left">
-												<span tw="font-medium">{player.refCount}/10</span>
+											<td tw="w-1/12 py-2 px-3 text-left">
+												<span tw="font-medium">{player.refCount < 11 ? (`${player.refCount}`) : ('10+')}</span>
 											</td>
-											<td tw="w-1/4 py-3 px-6 text-left">
+											<td tw="w-1/5 py-2 px-3 text-left bg-purple-50">
 												<span tw="font-medium">{prizeArray[index].prize}</span>
 											</td>
-											<td tw="flex-1 py-3 px-6 text-black">
+											<td tw="flex-1 py-2 px-3 text-black font-bold">
 												<span>{player.points}</span>
 											</td>
 										</tr>
 									))}
 
 									<tr tw="flex w-full border-2 border-red-600 rounded-lg">
-										<td tw="w-1/12 py-3 px-6 text-left">
+										<td tw="w-1/12 py-2 px-3 text-left">
 											<div tw="flex items-center">
 												<span tw="font-medium">{position + 1}</span>
 											</div>
 										</td>
-										<td tw="w-1/6 py-3 px-6 text-left">
+										<td tw="w-1/8 py-2 px-3 text-left">
 											<div tw="flex items-center">
 												<span tw="font-medium">{fid}</span>
 											</div>
 										</td>
-										<td tw="w-1/6 py-3 px-6 text-left">
+										<td tw="w-1/3 py-2 px-3 text-left">
 											<div tw="flex items-center">
 												<span>@{username}</span>
 											</div>
 										</td>
-										<td tw="w-1/12 py-3 px-6 text-left">
+										<td tw="w-1/12 py-2 px-3 text-left">
 											<div tw="flex items-center">
-												<span>{refCount}/10</span>
+												<span>{refCount < 11 ? (`${refCount}`) : ('10+')}</span>
 											</div>
 										</td>
-										<td tw="w-1/4 py-3 px-6 text-left">
+										<td tw="w-1/5 py-2 px-3 text-left bg-purple-50">
 											<div tw="flex items-center">
-												
+												{position + 1 >= 1 && position + 1 < 11 ? (
+												`${prizeArray[position].prize}`
+												) : ('?')}
 											</div>
 										</td>
-										<td tw="flex-1 py-3 px-6 text-black">
+										<td tw="flex-1 py-2 px-3 text-black font-bold">
 											<span>{points}</span>
 										</td>
 									</tr>
@@ -162,7 +164,7 @@ export async function GET(request: Request) {
 							justifyContent: 'space-between',
 							alignItems: 'center',
 							width: '100%',
-							fontFamily: 'Geist, GeistSans, Inter, "Material Icons"',
+							fontFamily: 'Arial, Inter, "Material Icons"',
 							fontSize: 20,
 							fontStyle: 'normal',
 							letterSpacing: '-0.025em',
@@ -184,13 +186,13 @@ export async function GET(request: Request) {
 			{
 				width: 960,
 				height: 960,
-				fonts: [
-					{
-					  name: 'Geist',
-					  data: fontData,
-					  style: 'normal',
-					},
-				  ],
+				// fonts: [
+				// 	{
+				// 	  name: 'Geist',
+				// 	  data: fontData,
+				// 	  style: 'normal',
+				// 	},
+				//   ],
 			},
 		);
 	} catch (e: any) {

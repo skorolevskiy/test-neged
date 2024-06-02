@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
     metadataBase: SITE_URL ? new URL(SITE_URL) : undefined,
-    title: 'Pill spin game [BETA]',
+    title: 'Neged Hat Game [BETA]',
     other: FRAME_METADATA,
     openGraph: {
         images: '/opengraph-image2.png',
