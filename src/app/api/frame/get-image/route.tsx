@@ -176,7 +176,7 @@ export async function GET(request: Request) {
 							alt="pill"
 							width="64"
 							height="64"
-							src={SITE_URL + '/status/logo.jpeg'}
+							src={SITE_URL + '/status/logo.png'}
 							/>
 					</div>
 				</div>
