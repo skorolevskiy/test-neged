@@ -92,7 +92,7 @@ export async function GET(request: Request) {
 										<th tw="w-1/12 py-3 px-6 text-left">#</th>
 										<th tw="w-1/6 py-3 px-6 text-left">Fid</th>
 										<th tw="w-1/6 py-3 px-6 text-left">Nickname</th>
-										<th tw="w-1/6 py-3 px-6 text-left">Ref.</th>
+										<th tw="w-1/12 py-3 px-6 text-left">Ref.</th>
 										<th tw="w-1/4 py-3 px-6 text-left">Prize</th>
 										<th tw="flex-1 py-3 px-6 text-black text-center">Points</th>
 									</tr>
@@ -109,7 +109,7 @@ export async function GET(request: Request) {
 											<td tw="w-1/6 py-3 px-6 text-left">
 												<span>@{(player.username).replace(/"/g, '')}</span>
 											</td>
-											<td tw="w-1/6 py-3 px-6 text-left">
+											<td tw="w-1/12 py-3 px-6 text-left">
 												<span tw="font-medium">{player.refCount}/10</span>
 											</td>
 											<td tw="w-1/4 py-3 px-6 text-left">
@@ -137,7 +137,7 @@ export async function GET(request: Request) {
 												<span>@{username}</span>
 											</div>
 										</td>
-										<td tw="w-1/6 py-3 px-6 text-left">
+										<td tw="w-1/12 py-3 px-6 text-left">
 											<div tw="flex items-center">
 												<span>{refCount}/10</span>
 											</div>
