@@ -80,15 +80,15 @@ function getResponse(type: ResponseType) {
 		`
 		: 
 		`
-    	<meta name="fc:frame:button:1" content="Left Hat" />
+    	<meta name="fc:frame:button:1" content="🎩Left Hat" />
 		<meta name="fc:frame:button:1:action" content="post" />
 		<meta name="fc:frame:button:1:target" content="${SITE_URL}/api/frame/spin/left" />
 
-		<meta name="fc:frame:button:2" content="Middle Hat" />
+		<meta name="fc:frame:button:2" content="🎩Middle Hat" />
 		<meta name="fc:frame:button:2:action" content="post" />
 		<meta name="fc:frame:button:2:target" content="${SITE_URL}/api/frame/spin/middle" />
 
-		<meta name="fc:frame:button:3" content="Right Hat" />
+		<meta name="fc:frame:button:3" content="🎩Right Hat" />
 		<meta name="fc:frame:button:3:action" content="post" />
 		<meta name="fc:frame:button:3:target" content="${SITE_URL}/api/frame/spin/right" />
 

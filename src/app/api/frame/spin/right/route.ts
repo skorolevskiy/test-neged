@@ -171,21 +171,21 @@ function getResponse(type: ResponseType) {
 
 		<meta name="fc:frame:button:2" content="↩️Back" />
 		<meta name="fc:frame:button:2:action" content="post" />
-		<meta name="fc:frame:button:2:target" content="${SITE_URL}/api/frame/" />
+		<meta name="fc:frame:button:2:target" content="${SITE_URL}/api/frame/spin/" />
 		`
 		: 
 		`
     	<meta name="fc:frame:button:1" content="🔄${buttonText}" />
 		<meta name="fc:frame:button:1:action" content="post" />
-		<meta name="fc:frame:button:1:target" content="${SITE_URL}/api/frame/spin/" />
+		<meta name="fc:frame:button:1:target" content="${SITE_URL}/api/frame/spin/right/" />
 
 		<meta name="fc:frame:button:2" content="${points} points" />
 		<meta name="fc:frame:button:2:action" content="post" />
-		<meta name="fc:frame:button:2:target" content="${SITE_URL}/api/frame/spin/" />
+		<meta name="fc:frame:button:2:target" content="${SITE_URL}/api/frame/spin/right/" />
 
 		<meta name="fc:frame:button:3" content="↩️Back" />
 		<meta name="fc:frame:button:3:action" content="post" />
-		<meta name="fc:frame:button:3:target" content="${SITE_URL}/api/frame/" />
+		<meta name="fc:frame:button:3:target" content="${SITE_URL}/api/frame/spin/" />
 		`
 	}
 
