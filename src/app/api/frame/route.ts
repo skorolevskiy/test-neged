@@ -96,8 +96,7 @@ enum ResponseType {
 	SUCCESS,
 	RECAST,
 	NO_ADDRESS,
-	ERROR,
-	NEED_TOKEN
+	ERROR
 }
 
 function getResponse(type: ResponseType) {
@@ -106,10 +105,9 @@ function getResponse(type: ResponseType) {
 		[ResponseType.RECAST]: 'status/recast.png',
 		[ResponseType.NO_ADDRESS]: 'status/no-address.png',
 		[ResponseType.ERROR]: 'status/error.png',
-		[ResponseType.NEED_TOKEN]: 'https://gateway.lighthouse.storage/ipfs/QmWzjYyDRau3u9QZ3JzzARKeQ3cvZJv3UetmrMiuCNw2CG',
 	}[type];
 	const shouldRetry =
-		type === ResponseType.ERROR || type === ResponseType.RECAST || type === ResponseType.NEED_TOKEN;
+		type === ResponseType.ERROR || type === ResponseType.RECAST;
 	// const successRetry = 
 	//   type === ResponseType.SUCCESS;
 	return new NextResponse(`<!DOCTYPE html><html><head>
