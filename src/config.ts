@@ -10,7 +10,7 @@ export const CONTRACT_ADDRESS = '0x388e543a5a491e7b42e3fbcd127dd6812ea02d0d';
 export const NEYNAR_API_KEY = process.env.NEYNAR_API_KEY;
 
 const imageData: FrameImageMetadata = {
-	src: `${SITE_URL}/opengraph-image.png`,
+	src: `${SITE_URL}/opengraph-image.jpg`,
 	aspectRatio: '1:1' // или '1.91:1'
 };
 
