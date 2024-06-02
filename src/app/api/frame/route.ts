@@ -102,10 +102,10 @@ enum ResponseType {
 
 function getResponse(type: ResponseType) {
 	const IMAGE = {
-		[ResponseType.SUCCESS]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/success.webp',
-		[ResponseType.RECAST]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/recast.png',
-		[ResponseType.NO_ADDRESS]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/no-address.png',
-		[ResponseType.ERROR]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/error.png',
+		[ResponseType.SUCCESS]: '/public/status/success.webp',
+		[ResponseType.RECAST]: '/public/status/recast.png',
+		[ResponseType.NO_ADDRESS]: '/public/status/no-address.png',
+		[ResponseType.ERROR]: '/public/status/error.png',
 		[ResponseType.NEED_TOKEN]: 'https://gateway.lighthouse.storage/ipfs/QmWzjYyDRau3u9QZ3JzzARKeQ3cvZJv3UetmrMiuCNw2CG',
 	}[type];
 	const shouldRetry =
@@ -114,7 +114,7 @@ function getResponse(type: ResponseType) {
 	//   type === ResponseType.SUCCESS;
 	return new NextResponse(`<!DOCTYPE html><html><head>
     <meta property="fc:frame" content="vNext" />
-    <meta property="fc:frame:image" content="${IMAGE}" />
+    <meta property="fc:frame:image" content="${SITE_URL}${IMAGE}" />
     <meta property="fc:frame:image:aspect_ratio" content="1:1" />
     <meta property="fc:frame:post_url" content="${SITE_URL}/api/frame" />
 
