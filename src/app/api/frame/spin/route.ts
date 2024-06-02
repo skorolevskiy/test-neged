@@ -38,7 +38,7 @@ export async function POST(req: NextRequest): Promise<Response> {
 				return getResponse(ResponseType.SPIN_OUT);
 			}
 
-		return getResponse(ResponseType.SPIN_OUT);
+		return getResponse(ResponseType.CHOICE);
 
 	} catch (error) {
 		console.error(error);
@@ -47,14 +47,14 @@ export async function POST(req: NextRequest): Promise<Response> {
 }
 
 enum ResponseType {
-	SUCCESS,
+	CHOICE,
 	ERROR,
 	SPIN_OUT
 }
 
 function getResponse(type: ResponseType) {
 	const IMAGE = {
-		[ResponseType.SUCCESS]: 'status/success.png',
+		[ResponseType.CHOICE]: 'status/choice.png',
 		[ResponseType.ERROR]: 'status/error.png',
 		[ResponseType.SPIN_OUT]: 'status/spin-out.png'
 	}[type];
