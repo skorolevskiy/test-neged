@@ -132,14 +132,19 @@ export async function GET(request: Request) {
 												<span tw="font-medium">{fid}</span>
 											</div>
 										</td>
-										<td tw="w-1/3 py-3 px-6 text-left">
+										<td tw="w-1/4 py-3 px-6 text-left">
 											<div tw="flex items-center">
 												<span>@{username}</span>
 											</div>
 										</td>
-										<td tw="w-1/3 py-3 px-6 text-left">
+										<td tw="w-1/4 py-3 px-6 text-left">
 											<div tw="flex items-center">
 												<span>{refCount}/10</span>
+											</div>
+										</td>
+										<td tw="w-1/4 py-3 px-6 text-left">
+											<div tw="flex items-center">
+												
 											</div>
 										</td>
 										<td tw="flex-1 py-3 px-6 text-black">
