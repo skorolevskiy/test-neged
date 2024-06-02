@@ -180,7 +180,7 @@ async function validateFrameRequest(data: string | undefined) {
 }
 
 function getRandomNumber(): number {
-    const weights = [15, 25, 25, 15, 10, 5, 5];
+    const weights = [15, 30, 25, 10, 10, 5, 5];
     const cumulativeWeights: any = [];
 
     // Заполняем массив кумулятивных весов
