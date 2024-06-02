@@ -39,37 +39,37 @@ export async function POST(req: NextRequest): Promise<Response> {
 					await updatePointsSpins(fid, 100);
 					spins--;
 					console.warn('+100');
-					return getResponse(ResponseType.IMAGE_5);
+					return getResponse(ResponseType.IMAGE_100);
 				case 2:
 					await updatePointsSpins(fid, 250);
 					spins--;
 					console.warn('+250');
-					return getResponse(ResponseType.IMAGE_25);
+					return getResponse(ResponseType.IMAGE_250);
 				case 3:
 					await updatePointsSpins(fid, 500);
 					spins--;
 					console.warn('+500');
-					return getResponse(ResponseType.IMAGE_50);
+					return getResponse(ResponseType.IMAGE_1000);
 				case 4:
 					await updatePointsSpins(fid, 1000);
 					spins--;
 					console.warn('+1000');
-					return getResponse(ResponseType.IMAGE_100);
+					return getResponse(ResponseType.IMAGE_3000);
 				case 5:
 					await updatePointsSpins(fid, 3000);
 					spins--;
 					console.warn('+3000');
-					return getResponse(ResponseType.IMAGE_150);
+					return getResponse(ResponseType.IMAGE_5000);
 				case 6:
 					await updatePointsSpins(fid, 5000);
 					spins--;
 					console.warn('+5000');
-					return getResponse(ResponseType.IMAGE_200);
+					return getResponse(ResponseType.IMAGE_5000);
 				case 7:
 					await updatePointsSpins(fid, 10000);
 					spins--;
 					console.warn('+10000');
-					return getResponse(ResponseType.IMAGE_250);
+					return getResponse(ResponseType.IMAGE_10000);
 			}
 		} else {
 			return getResponse(ResponseType.SPIN_OUT);
@@ -93,35 +93,29 @@ export async function POST(req: NextRequest): Promise<Response> {
 
 enum ResponseType {
 	SUCCESS,
-	IMAGE_5,
-	IMAGE_25,
-	IMAGE_50,
 	IMAGE_100,
-	IMAGE_150,
-	IMAGE_200,
 	IMAGE_250,
 	IMAGE_500,
-	ALREADY_MINTED,
-	NO_ADDRESS,
+	IMAGE_1000,
+	IMAGE_3000,
+	IMAGE_5000,
+	IMAGE_10000,
 	ERROR,
 	SPIN_OUT
 }
 
 function getResponse(type: ResponseType) {
 	const IMAGE = {
-		[ResponseType.SUCCESS]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/success.webp',
-		[ResponseType.IMAGE_5]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/5.gif',
-		[ResponseType.IMAGE_25]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/25.gif',
-		[ResponseType.IMAGE_50]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/50.gif',
-		[ResponseType.IMAGE_100]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/100.gif',
-		[ResponseType.IMAGE_150]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/150.gif',
-		[ResponseType.IMAGE_200]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/200.gif',
-		[ResponseType.IMAGE_250]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/250.gif',
-		[ResponseType.IMAGE_500]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/500.gif',
-		[ResponseType.ALREADY_MINTED]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/already-minted.png',
-		[ResponseType.NO_ADDRESS]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/no-address.png',
-		[ResponseType.ERROR]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/error.png',
-		[ResponseType.SPIN_OUT]: 'https://gateway.lighthouse.storage/ipfs/QmaS8bbwz79CWfJEfJ44JEu4PA7QkR563koCqSdgPED6Jp/spin-out.png'
+		[ResponseType.SUCCESS]: 'status/success.png',
+		[ResponseType.IMAGE_100]: 'status/100.png',
+		[ResponseType.IMAGE_250]: 'status/250.png',
+		[ResponseType.IMAGE_500]: 'status/500.png',
+		[ResponseType.IMAGE_1000]: 'status/1000.png',
+		[ResponseType.IMAGE_3000]: 'status/3000.png',
+		[ResponseType.IMAGE_5000]: 'status/5000.png',
+		[ResponseType.IMAGE_10000]: 'status/10000.png',
+		[ResponseType.ERROR]: 'status/error.png',
+		[ResponseType.SPIN_OUT]: 'status/spin-out.png'
 	}[type];
 	const shouldRetry =
 	  type === ResponseType.SPIN_OUT;
@@ -129,9 +123,7 @@ function getResponse(type: ResponseType) {
 	//   type === ResponseType.SUCCESS;
 	return new NextResponse(`<!DOCTYPE html><html><head>
     <meta property="fc:frame" content="vNext" />
-    <meta property="fc:frame:image" content="${IMAGE}" />
-    <meta property="fc:frame:image:aspect_ratio" content="1:1" />
-    <meta property="fc:frame:post_url" content="${SITE_URL}/api/frame" />
+    <meta property="fc:frame:image" content="${SITE_URL}/${IMAGE}" />
 
 	${shouldRetry
 		? `
