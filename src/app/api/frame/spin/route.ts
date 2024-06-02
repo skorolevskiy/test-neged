@@ -39,14 +39,6 @@ export async function POST(req: NextRequest): Promise<Response> {
 			}
 
 		return getResponse(ResponseType.SPIN_OUT);
-		// Check if user has minted before
-		// if (HAS_KV) {
-		//   const prevMintHash = await kv.get<Hex>(`mint:${address}`);
-
-		//   if (prevMintHash) {
-		//     return getResponse(ResponseType.ALREADY_MINTED);
-		//   }
-		// }
 
 	} catch (error) {
 		console.error(error);
@@ -56,17 +48,13 @@ export async function POST(req: NextRequest): Promise<Response> {
 
 enum ResponseType {
 	SUCCESS,
-	ALREADY_MINTED,
-	NO_ADDRESS,
 	ERROR,
 	SPIN_OUT
 }
 
 function getResponse(type: ResponseType) {
 	const IMAGE = {
-		[ResponseType.SUCCESS]: 'status/success.webp',
-		[ResponseType.ALREADY_MINTED]: 'status/already-minted.png',
-		[ResponseType.NO_ADDRESS]: 'status/no-address.png',
+		[ResponseType.SUCCESS]: 'status/success.png',
 		[ResponseType.ERROR]: 'status/error.png',
 		[ResponseType.SPIN_OUT]: 'status/spin-out.png'
 	}[type];
@@ -92,17 +80,21 @@ function getResponse(type: ResponseType) {
 		`
 		: 
 		`
-    	<meta name="fc:frame:button:1" content="🔄${buttonText}" />
+    	<meta name="fc:frame:button:1" content="Left Hat" />
 		<meta name="fc:frame:button:1:action" content="post" />
-		<meta name="fc:frame:button:1:target" content="${SITE_URL}/api/frame/spin/" />
+		<meta name="fc:frame:button:1:target" content="${SITE_URL}/api/frame/spin/left" />
 
-		<meta name="fc:frame:button:2" content="${points} points" />
+		<meta name="fc:frame:button:2" content="Middle Hat" />
 		<meta name="fc:frame:button:2:action" content="post" />
-		<meta name="fc:frame:button:2:target" content="${SITE_URL}/api/frame/spin/" />
+		<meta name="fc:frame:button:2:target" content="${SITE_URL}/api/frame/spin/middle" />
 
-		<meta name="fc:frame:button:3" content="↩️Back" />
+		<meta name="fc:frame:button:3" content="Right Hat" />
 		<meta name="fc:frame:button:3:action" content="post" />
-		<meta name="fc:frame:button:3:target" content="${SITE_URL}/api/frame/" />
+		<meta name="fc:frame:button:3:target" content="${SITE_URL}/api/frame/spin/right" />
+
+		<meta name="fc:frame:button:4" content="↩️Back" />
+		<meta name="fc:frame:button:4:action" content="post" />
+		<meta name="fc:frame:button:4:target" content="${SITE_URL}/api/frame/right" />
 		`
 	}
 
