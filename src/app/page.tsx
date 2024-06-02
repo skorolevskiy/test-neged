@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'Neged Hat Game [BETA]',
     other: FRAME_METADATA,
     openGraph: {
-        images: '/opengraph-image2.png',
+        images: '/opengraph-image.png',
     },
     
 };
@@ -26,7 +26,7 @@ export default function Home() {
                     color: 'white',
                 }}
             >
-                <a href="https://warpcast.com/~/channel/pill">Go to Farcaster!</a>
+                <a href="https://warpcast.com/~/channel/neged">Go to Farcaster!</a>
             </h1>
         </div>
     );
