@@ -114,7 +114,7 @@ export async function getTopPlayers(): Promise<any> {
 	try {
 		data = await db
 			.selectFrom('players')
-			.select(['fid', 'username', 'points'])
+			.select(['fid', 'username', 'points', 'refCount'])
 			.orderBy('points desc')
 			.limit(10)
 			.execute();
