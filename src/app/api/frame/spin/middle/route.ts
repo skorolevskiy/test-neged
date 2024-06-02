@@ -1,6 +1,6 @@
 import { SITE_URL, NEYNAR_API_KEY } from '@/config';
 import { NextRequest, NextResponse } from 'next/server';
-import { updatePointsSpins, updatePoints, updateDate, getUser } from '../types';
+import { updatePointsSpins, updatePoints, updateDate, getUser } from '../../types';
 
 // const HAS_KV = !!process.env.KV_URL;
 // const transport = http(process.env.RPC_URL);
