@@ -2,16 +2,17 @@ import { sql } from '@vercel/postgres'
 
 export async function seed() {
   const createTable = await sql`
-    CREATE TABLE IF NOT EXISTS spiners (
+    CREATE TABLE IF NOT EXISTS players (
       id SERIAL PRIMARY KEY,
       fid VARCHAR(255) NOT NULL,
       username VARCHAR(255) UNIQUE NOT NULL,
-      name VARCHAR(255),
+      wallet VARCHAR(255),
       points INTEGER,
       "dailySpins" INTEGER,
       "lastSpin" TIMESTAMP,
       "refFid" VARCHAR(255) NOT NULL,
-      "refSpin" INTEGER,
+      "refCount" INTEGER,
+      "refSpins" INTEGER,
       "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
     );
     `

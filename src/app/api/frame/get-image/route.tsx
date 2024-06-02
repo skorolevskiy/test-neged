@@ -10,6 +10,7 @@ interface Player {
 	fid: string;
 	username: string,
 	points: number;
+	refCount: number;
 }
 
 export async function GET(request: Request) {
@@ -36,6 +37,19 @@ export async function GET(request: Request) {
 		}
 
 		const topPlayers: Player[] = await getTopPlayers();
+
+		const prizeArray = [
+			{ prize: '1,000,000 $negeD' },
+			{ prize: '250,000 $negeD' },
+			{ prize: '100,000 $negeD' },
+			{ prize: '75,000 $negeD' },
+			{ prize: '50,000 $negeD' },
+			{ prize: '40,000 $negeD' },
+			{ prize: '30,000 $negeD' },
+			{ prize: '20,000 $negeD' },
+			{ prize: '10,000 $negeD' },
+			{ prize: '5,000 $negeD' }
+		  ];
 
 		return new ImageResponse(
 			(
@@ -77,8 +91,10 @@ export async function GET(request: Request) {
 								<thead tw="flex">
 									<tr tw="flex w-full bg-gray-200 text-gray-600 uppercase text-2xl leading-normal rounded-lg">
 										<th tw="w-1/12 py-3 px-6 text-left">#</th>
-										<th tw="w-1/4 py-3 px-6 text-left">Fid</th>
-										<th tw="w-1/2 py-3 px-6 text-left">Nickname</th>
+										<th tw="w-1/6 py-3 px-6 text-left">Fid</th>
+										<th tw="w-1/6 py-3 px-6 text-left">Nickname</th>
+										<th tw="w-1/6 py-3 px-6 text-left">Ref.</th>
+										<th tw="w-1/6 py-3 px-6 text-left">Prize</th>
 										<th tw="flex-1 py-3 px-6 text-black text-center">Points</th>
 									</tr>
 								</thead>
@@ -88,11 +104,17 @@ export async function GET(request: Request) {
 											<td tw="w-1/12 py-3 px-6 text-left">
 												<span tw="font-medium">{index + 1}</span>
 											</td>
-											<td tw="w-1/4 py-3 px-6 text-left">
+											<td tw="w-1/6 py-3 px-6 text-left">
 												<span tw="font-medium">{player.fid}</span>
 											</td>
-											<td tw="w-1/2 py-3 px-6 text-left">
+											<td tw="w-1/6 py-3 px-6 text-left">
 												<span>@{(player.username).replace(/"/g, '')}</span>
+											</td>
+											<td tw="w-1/6 py-3 px-6 text-left">
+												<span tw="font-medium">{player.refCount}</span>
+											</td>
+											<td tw="w-1/6 py-3 px-6 text-left">
+												<span tw="font-medium">{prizeArray[index].prize}</span>
 											</td>
 											<td tw="flex-1 py-3 px-6 text-black">
 												<span>{player.points}</span>
