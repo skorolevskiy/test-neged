@@ -102,10 +102,10 @@ enum ResponseType {
 
 function getResponse(type: ResponseType) {
 	const IMAGE = {
-		[ResponseType.SUCCESS]: '/public/status/success.webp',
-		[ResponseType.RECAST]: '/public/status/recast.png',
-		[ResponseType.NO_ADDRESS]: '/public/status/no-address.png',
-		[ResponseType.ERROR]: '/public/status/error.png',
+		[ResponseType.SUCCESS]: 'status/success.png',
+		[ResponseType.RECAST]: 'status/recast.png',
+		[ResponseType.NO_ADDRESS]: 'status/no-address.png',
+		[ResponseType.ERROR]: 'status/error.png',
 		[ResponseType.NEED_TOKEN]: 'https://gateway.lighthouse.storage/ipfs/QmWzjYyDRau3u9QZ3JzzARKeQ3cvZJv3UetmrMiuCNw2CG',
 	}[type];
 	const shouldRetry =
@@ -114,7 +114,7 @@ function getResponse(type: ResponseType) {
 	//   type === ResponseType.SUCCESS;
 	return new NextResponse(`<!DOCTYPE html><html><head>
     <meta property="fc:frame" content="vNext" />
-    <meta property="fc:frame:image" content="${SITE_URL}${IMAGE}" />
+    <meta property="fc:frame:image" content="${SITE_URL}/${IMAGE}" />
     <meta property="fc:frame:image:aspect_ratio" content="1:1" />
     <meta property="fc:frame:post_url" content="${SITE_URL}/api/frame" />
 
