@@ -94,7 +94,7 @@ function getResponse(type: ResponseType) {
 
 		<meta name="fc:frame:button:4" content="↩️Back" />
 		<meta name="fc:frame:button:4:action" content="post" />
-		<meta name="fc:frame:button:4:target" content="${SITE_URL}/api/frame/right" />
+		<meta name="fc:frame:button:4:target" content="${SITE_URL}/api/frame/" />
 		`
 	}
 
