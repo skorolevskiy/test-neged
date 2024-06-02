@@ -46,7 +46,6 @@ export async function POST(req: NextRequest): Promise<Response> {
 
 		const fid_new = status?.action?.interactor?.fid ? JSON.stringify(status.action.interactor.fid) : null;
 		const username_new = status?.action?.interactor?.username ? JSON.stringify(status.action.interactor.username) : null;
-		const display_name_new = status?.action?.interactor?.display_name ? JSON.stringify(status.action.interactor.display_name) : null;
 		const refFid_new = status?.action?.cast?.author?.fid ? JSON.stringify(status?.action?.cast?.author?.fid) : '18850';
 		const wallet = status?.action?.interactor?.verifications?.[0] ? status.action.interactor.verifications?.[0] : null;
 
@@ -54,9 +53,9 @@ export async function POST(req: NextRequest): Promise<Response> {
 
 		if (!User) {
 			//console.warn('not added: ' + JSON.stringify(User));
-			await addUser(fid_new, username_new, display_name_new, refFid_new, wallet);
+			await addUser(fid_new, username_new, wallet, refFid_new);
 			await updateRef(refFid_new);
-			spins = 3;
+			spins = 2;
 		} else {
 			//console.warn('added: ' + JSON.stringify(User));
 

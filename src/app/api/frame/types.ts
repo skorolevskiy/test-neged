@@ -49,7 +49,7 @@ export async function getUser(fid: string | null): Promise<any> {
 	}
 }
 
-export async function addUser(fid: string | null, username: string | null, wallet: string | null, ref_fid: string | null, power_badge: boolean | null) {
+export async function addUser(fid: string | null, username: string | null, wallet: string | null, ref_fid: string | null) {
 
 	const result = await db
 		.insertInto('players')
