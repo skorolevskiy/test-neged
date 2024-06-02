@@ -6,7 +6,7 @@ import { updatePointsSpins, updatePoints, updateDate, getUser } from '../../type
 // const transport = http(process.env.RPC_URL);
 
 export const dynamic = 'force-dynamic';
-let spins: number, date: string, points: number, buttonText: string;
+let spins: number, date: string, points: number;
 
 export async function POST(req: NextRequest): Promise<Response> {
 	try {
@@ -31,77 +31,48 @@ export async function POST(req: NextRequest): Promise<Response> {
 			points = User.points;
 		}
 
-		const randomNumber = weighted_random_number();
+		const randomNumber = getRandomNumber();
 
 		if (spins > 0) {
-			buttonText = (spins - 1) + " free spins";
 			switch (randomNumber) {
 				case 1:
-					await updatePointsSpins(fid, 5);
-					spins--;
-					return getResponse(ResponseType.IMAGE_5);
-				case 2:
-					await updatePointsSpins(fid, 25);
-					spins--;
-					return getResponse(ResponseType.IMAGE_25);
-				case 3:
-					await updatePointsSpins(fid, 50);
-					spins--;
-					return getResponse(ResponseType.IMAGE_50);
-				case 4:
 					await updatePointsSpins(fid, 100);
 					spins--;
-					return getResponse(ResponseType.IMAGE_100);
-				case 5:
-					await updatePointsSpins(fid, 150);
-					spins--;
-					return getResponse(ResponseType.IMAGE_150);
-				case 6:
-					await updatePointsSpins(fid, 200);
-					spins--;
-					return getResponse(ResponseType.IMAGE_200);
-				case 7:
+					console.warn('+100');
+					return getResponse(ResponseType.IMAGE_5);
+				case 2:
 					await updatePointsSpins(fid, 250);
 					spins--;
-					return getResponse(ResponseType.IMAGE_250);
-				case 8:
+					console.warn('+250');
+					return getResponse(ResponseType.IMAGE_25);
+				case 3:
 					await updatePointsSpins(fid, 500);
 					spins--;
-					return getResponse(ResponseType.IMAGE_500);
+					console.warn('+500');
+					return getResponse(ResponseType.IMAGE_50);
+				case 4:
+					await updatePointsSpins(fid, 1000);
+					spins--;
+					console.warn('+1000');
+					return getResponse(ResponseType.IMAGE_100);
+				case 5:
+					await updatePointsSpins(fid, 3000);
+					spins--;
+					console.warn('+3000');
+					return getResponse(ResponseType.IMAGE_150);
+				case 6:
+					await updatePointsSpins(fid, 5000);
+					spins--;
+					console.warn('+5000');
+					return getResponse(ResponseType.IMAGE_200);
+				case 7:
+					await updatePointsSpins(fid, 10000);
+					spins--;
+					console.warn('+10000');
+					return getResponse(ResponseType.IMAGE_250);
 			}
 		} else {
-			if (points > 100) {
-				buttonText = "Spin -100 points";
-				points = points - 100;
-				switch (randomNumber) {
-					case 1:
-						await updatePoints(fid, -95);
-						return getResponse(ResponseType.IMAGE_5);
-					case 2:
-						await updatePoints(fid, -75);
-						return getResponse(ResponseType.IMAGE_25);
-					case 3:
-						await updatePoints(fid, -50);
-						return getResponse(ResponseType.IMAGE_50);
-					case 4:
-						await updatePoints(fid, 0);
-						return getResponse(ResponseType.IMAGE_100);
-					case 5:
-						await updatePoints(fid, 50);
-						return getResponse(ResponseType.IMAGE_150);
-					case 6:
-						await updatePoints(fid, 100);
-						return getResponse(ResponseType.IMAGE_200);
-					case 7:
-						await updatePoints(fid, 150);
-						return getResponse(ResponseType.IMAGE_250);
-					case 8:
-						await updatePoints(fid, 400);
-						return getResponse(ResponseType.IMAGE_500);
-				}
-			} else {
-				return getResponse(ResponseType.SPIN_OUT);
-			}
+			return getResponse(ResponseType.SPIN_OUT);
 			
 		}
 
@@ -175,13 +146,13 @@ function getResponse(type: ResponseType) {
 		`
 		: 
 		`
-    	<meta name="fc:frame:button:1" content="🔄${buttonText}" />
+    	<meta name="fc:frame:button:1" content="🔄Try more" />
 		<meta name="fc:frame:button:1:action" content="post" />
 		<meta name="fc:frame:button:1:target" content="${SITE_URL}/api/frame/spin/right/" />
 
-		<meta name="fc:frame:button:2" content="${points} points" />
+		<meta name="fc:frame:button:2" content="Leaderboard" />
 		<meta name="fc:frame:button:2:action" content="post" />
-		<meta name="fc:frame:button:2:target" content="${SITE_URL}/api/frame/spin/right/" />
+		<meta name="fc:frame:button:2:target" content="${SITE_URL}/api/frame/leaderboard/" />
 
 		<meta name="fc:frame:button:3" content="↩️Back" />
 		<meta name="fc:frame:button:3:action" content="post" />
@@ -214,16 +185,24 @@ async function validateFrameRequest(data: string | undefined) {
 		.catch((err) => console.error(err));
 }
 
-function weighted_random_number() {
-	const weights = [5, 4, 4, 4, 3, 2, 2, 1];
+function getRandomNumber(): number {
+    const weights = [15, 25, 25, 15, 10, 5, 5];
+    const cumulativeWeights: any = [];
 
-	const total_weight = weights.reduce((acc, val) => acc + val, 0);
-	const random_weight = Math.floor(Math.random() * total_weight);
-	let cumulative_weight = 0;
-	for (let i = 0; i < weights.length; i++) {
-		cumulative_weight += weights[i];
-		if (random_weight < cumulative_weight) {
-			return i + 1;
-		}
-	}
+    // Заполняем массив кумулятивных весов
+    weights.reduce((acc, weight, index) => {
+        cumulativeWeights[index] = acc + weight;
+        return cumulativeWeights[index];
+    }, 0);
+
+    const random = Math.random() * cumulativeWeights[cumulativeWeights.length - 1];
+
+    // Определяем в какой диапазон попадает случайное число
+    for (let i = 0; i < cumulativeWeights.length; i++) {
+        if (random < cumulativeWeights[i]) {
+            return i + 1;
+        }
+    }
+
+    return 1; // На случай если что-то пойдет не так, возвращаем 1
 }
