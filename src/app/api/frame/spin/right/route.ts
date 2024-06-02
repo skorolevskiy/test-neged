@@ -148,9 +148,9 @@ function getResponse(type: ResponseType) {
 		<meta name="fc:frame:button:2:action" content="post" />
 		<meta name="fc:frame:button:2:target" content="${SITE_URL}/api/frame/leaderboard/" />
 
-		<meta name="fc:frame:button:3" content="↩️Back" />
-		<meta name="fc:frame:button:3:action" content="post" />
-		<meta name="fc:frame:button:3:target" content="${SITE_URL}/api/frame/spin/" />
+		<meta name="fc:frame:button:1" content="Get more Hats" />
+    	<meta name="fc:frame:button:1:action" content="link" />
+    	<meta name="fc:frame:button:1:target" content="https://warpcast.com/~/compose?text=%F0%9F%8C%80%20Cast%20and%20get%203%20free%20spins%20to%20earn%20points.%20Points%20will%20be%20exchanged%20for%20tokens%20at%20the%20end%20of%20the%201st%20season.%20%0A%0A%F0%9F%AB%82%20Get%203%20more%20spins%20for%20each%20friend%20you%20invite.%20Read%20the%20%C2%ABRules%C2%BB%0Asection%20to%20learn%20more.%0A%0A%E2%98%80%EF%B8%8F%20Enter%20Onchain%20Summer%20with%20%2Fpill&embeds[]=${SITE_URL}/" />
 		`
 	}
 
