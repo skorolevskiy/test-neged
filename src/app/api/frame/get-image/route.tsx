@@ -4,7 +4,7 @@ import { getTopPlayers, getUser, getUserPosition } from '../types';
 // App router includes @vercel/og.
 // No need to install it.
 
-let fid: string, username: string, points: number, position: number;
+let fid: string, username: string, points: number, position: number, refCount: number;
 
 interface Player {
 	fid: string;
@@ -27,13 +27,12 @@ export async function GET(request: Request) {
 		const user = await getUser(fid);
 		position = Number(await getUserPosition(fid));
 
-		console.log(typeof position);
-
 		if (!user) {
 			points = 0;
 		} else {
 			username = (user.username).replace(/"/g, '');
 			points = user.points;
+			refCount = user.refCount;
 		}
 
 		const topPlayers: Player[] = await getTopPlayers();
@@ -94,7 +93,7 @@ export async function GET(request: Request) {
 										<th tw="w-1/6 py-3 px-6 text-left">Fid</th>
 										<th tw="w-1/6 py-3 px-6 text-left">Nickname</th>
 										<th tw="w-1/6 py-3 px-6 text-left">Ref.</th>
-										<th tw="w-1/6 py-3 px-6 text-left">Prize</th>
+										<th tw="w-1/4 py-3 px-6 text-left">Prize</th>
 										<th tw="flex-1 py-3 px-6 text-black text-center">Points</th>
 									</tr>
 								</thead>
@@ -113,7 +112,7 @@ export async function GET(request: Request) {
 											<td tw="w-1/6 py-3 px-6 text-left">
 												<span tw="font-medium">{player.refCount}</span>
 											</td>
-											<td tw="w-1/6 py-3 px-6 text-left">
+											<td tw="w-1/4 py-3 px-6 text-left">
 												<span tw="font-medium">{prizeArray[index].prize}</span>
 											</td>
 											<td tw="flex-1 py-3 px-6 text-black">
@@ -133,9 +132,14 @@ export async function GET(request: Request) {
 												<span tw="font-medium">{fid}</span>
 											</div>
 										</td>
-										<td tw="w-1/2 py-3 px-6 text-left">
+										<td tw="w-1/3 py-3 px-6 text-left">
 											<div tw="flex items-center">
 												<span>@{username}</span>
+											</div>
+										</td>
+										<td tw="w-1/3 py-3 px-6 text-left">
+											<div tw="flex items-center">
+												<span>{refCount}/10</span>
 											</div>
 										</td>
 										<td tw="flex-1 py-3 px-6 text-black">
