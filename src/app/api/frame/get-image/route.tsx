@@ -176,8 +176,8 @@ export async function GET(request: Request) {
 						<p>Build by Neged, dev @eat</p>
 						<img
 							alt="pill"
-							width="32"
-							height="32"
+							width="64"
+							height="64"
 							src={SITE_URL + '/status/logo.png'}
 							/>
 					</div>
