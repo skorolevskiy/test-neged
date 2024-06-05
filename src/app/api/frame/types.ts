@@ -88,11 +88,18 @@ export async function updatePoints(fid: string | null, points: number) {
 		.execute()
 }
 
-export async function updateDate(fid: string | null) {
+export async function updateDate(fid: string | null, refCount: number) {
+	let spinsCount = 2;
+	if (refCount > 10) {
+		spinsCount = spinsCount + 10;
+	}
+	else {
+		spinsCount = spinsCount + refCount;
+	}
 	await db
 		.updateTable('players')
 		.set((eb) => ({
-			dailySpins: 2,
+			dailySpins: spinsCount,
 			lastSpin: new Date().toLocaleString(),
 		}))
 		.where('fid', '=', fid)

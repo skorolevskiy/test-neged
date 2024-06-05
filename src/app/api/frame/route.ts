@@ -11,7 +11,7 @@ import {
 	formatUnits
 } from 'viem';
 
-let fid: string, points: number, spins: number, dateString: string, refFid: string;
+let fid: string, points: number, spins: number, dateString: string, refFid: string, refCount: number;
 import { addUser, getUser, updateDate, updateRef } from './types'
 //const HAS_KV = !!process.env.KV_URL;
 const transport = http(process.env.RPC_URL);
@@ -52,25 +52,34 @@ export async function POST(req: NextRequest): Promise<Response> {
 		const User = await getUser(fid_new);
 
 		if (!User) {
-			//console.warn('not added: ' + JSON.stringify(User));
 			await addUser(fid_new, username_new, wallet, refFid_new);
-			await updateRef(refFid_new);
 			spins = 2;
-		} else {
-			//console.warn('added: ' + JSON.stringify(User));
 
-			//points = User.points;
+			const UserRef = await getUser(refFid_new);
+			let refCount = UserRef.refCount;
+			if (refCount < 10) {
+				await updateRef(refFid_new);
+			}
+		} else {
 			refFid = User.refFid;
 			spins = User.dailySpins;
 			dateString = User.lastSpin;
+			refCount = User.refCount;
 		}
 
 		const today: string = new Date().toLocaleString().split(',')[0];
 		const lastSpin: string = new Date(dateString).toLocaleString().split(',')[0];
 
 		if (lastSpin !== today) {
-			await updateDate(fid_new);
-			spins = 2;
+			await updateDate(fid_new, refCount);
+			let spinsCount = 2;
+			if (refCount > 10) {
+				spinsCount = spinsCount + 10;
+			}
+			else {
+				spinsCount = spinsCount + refCount;
+			}
+			spins = spinsCount;
 		}
 
 		// // Check if user has liked and recasted
