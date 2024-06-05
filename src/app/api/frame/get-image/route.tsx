@@ -75,7 +75,6 @@ export async function GET(request: Request) {
 							fontSize: 60,
 							fontStyle: 'normal',
 							fontWeight: 700,
-							letterSpacing: '-0.025em',
 							color: 'white',
 							lineHeight: 1,
 							whiteSpace: 'pre-wrap',
