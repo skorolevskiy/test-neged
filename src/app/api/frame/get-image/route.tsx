@@ -166,9 +166,8 @@ export async function GET(request: Request) {
 							fontFamily: 'Nanum Pen, Inter, "Material Icons"',
 							fontSize: 40,
 							fontStyle: 'normal',
-							letterSpacing: '-0.025em',
 							color: 'black',
-							lineHeight: 1.4,
+							lineHeight: 1,
 							whiteSpace: 'pre-wrap',
 						}}
 					>
