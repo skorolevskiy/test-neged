@@ -84,7 +84,7 @@ export async function GET(request: Request) {
 					</div>
 
 					<div tw="flex w-full">
-						<div tw="flex bg-white shadow-lg rounded-lg my-6">
+						<div tw="flex bg-white shadow-lg rounded-lg my-2">
 							<table tw="w-full flex flex-col rounded-lg">
 								<thead tw="flex">
 									<tr tw="flex w-full bg-purple-100 text-gray-600 uppercase text-4xl leading-normal rounded-lg">
