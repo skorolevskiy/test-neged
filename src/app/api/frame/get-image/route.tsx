@@ -60,7 +60,7 @@ export async function GET(request: Request) {
 						background: '#1e293b',
 						width: '100%',
 						height: '100%',
-						padding: '40px 50px',
+						padding: '20px 50px',
 						textAlign: 'center',
 						display: 'flex',
 						justifyContent: 'flex-start',
@@ -72,7 +72,7 @@ export async function GET(request: Request) {
 					<div
 						style={{
 							fontFamily: 'Nanum Pen, Inter, "Material Icons"',
-							fontSize: 40,
+							fontSize: 60,
 							fontStyle: 'normal',
 							fontWeight: 700,
 							letterSpacing: '-0.025em',
