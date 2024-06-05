@@ -88,7 +88,7 @@ export async function GET(request: Request) {
 						<div tw="flex bg-white shadow-lg rounded-lg my-6">
 							<table tw="w-full flex flex-col rounded-lg">
 								<thead tw="flex">
-									<tr tw="flex w-full bg-purple-100 text-gray-600 uppercase text-2xl leading-normal rounded-lg">
+									<tr tw="flex w-full bg-purple-100 text-gray-600 uppercase text-4xl leading-normal rounded-lg">
 										<th tw="w-1/12 py-3 px-3 text-left">#</th>
 										<th tw="w-1/8 py-3 px-3 text-left">Fid</th>
 										<th tw="w-1/3 py-3 px-3 text-left">Nickname</th>
@@ -97,7 +97,7 @@ export async function GET(request: Request) {
 										<th tw="flex-1 py-3 px-3 text-black text-center">Points</th>
 									</tr>
 								</thead>
-								<tbody tw="flex w-full flex-col text-gray-600 text-2xl font-light">
+								<tbody tw="flex w-full flex-col text-gray-600 text-4xl font-light">
 									{topPlayers.map((player, index) => (
 										<tr  key={index + 1} tw="flex w-full border-2 border-gray-200 bg-gray-50">
 											<td tw="w-1/12 py-2 px-3 text-left">
