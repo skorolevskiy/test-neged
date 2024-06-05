@@ -55,7 +55,7 @@ export async function GET(request: Request) {
 				<div
 					style={{
 						fontFamily: 'Nanum Pen, Inter, "Material Icons"',
-						fontSize: 80,
+						fontSize: 40,
 						color: 'black',
 						background: '#1e293b',
 						width: '100%',
@@ -72,7 +72,7 @@ export async function GET(request: Request) {
 					<div
 						style={{
 							fontFamily: 'Nanum Pen, Inter, "Material Icons"',
-							fontSize: 60,
+							fontSize: 40,
 							fontStyle: 'normal',
 							fontWeight: 700,
 							letterSpacing: '-0.025em',
@@ -165,7 +165,7 @@ export async function GET(request: Request) {
 							alignItems: 'center',
 							width: '100%',
 							fontFamily: 'Nanum Pen, Inter, "Material Icons"',
-							fontSize: 40,
+							fontSize: 30,
 							fontStyle: 'normal',
 							letterSpacing: '-0.025em',
 							color: 'white',
@@ -176,8 +176,8 @@ export async function GET(request: Request) {
 						<p>Build by Neged, dev @eat</p>
 						<img
 							alt="pill"
-							width="64"
-							height="64"
+							width="32"
+							height="32"
 							src={SITE_URL + '/status/logo.png'}
 							/>
 					</div>
