@@ -55,7 +55,7 @@ export async function GET(request: Request) {
 				<div
 					style={{
 						fontFamily: 'Nanum Pen, Inter, "Material Icons"',
-						fontSize: 40,
+						fontSize: 80,
 						color: 'black',
 						background: '#1e293b',
 						width: '100%',
@@ -72,7 +72,7 @@ export async function GET(request: Request) {
 					<div
 						style={{
 							fontFamily: 'Nanum Pen, Inter, "Material Icons"',
-							fontSize: 40,
+							fontSize: 60,
 							fontStyle: 'normal',
 							fontWeight: 700,
 							letterSpacing: '-0.025em',
@@ -84,7 +84,7 @@ export async function GET(request: Request) {
 						Leaderboard
 					</div>
 
-					<div tw="flex w-full text-3xl">
+					<div tw="flex w-full text-4xl">
 						<div tw="flex bg-white shadow-lg rounded-lg my-6">
 							<table tw="w-full flex flex-col rounded-lg">
 								<thead tw="flex">
@@ -165,7 +165,7 @@ export async function GET(request: Request) {
 							alignItems: 'center',
 							width: '100%',
 							fontFamily: 'Nanum Pen, Inter, "Material Icons"',
-							fontSize: 20,
+							fontSize: 40,
 							fontStyle: 'normal',
 							letterSpacing: '-0.025em',
 							color: 'white',
