@@ -14,9 +14,9 @@ interface Player {
 }
 
 export async function GET(request: Request) {
-	// const fontData = await fetch(
-	// 	new URL(SITE_URL + '/assets/GeistMonoRegular.ttf', import.meta.url),
-	//   ).then((res) => res.arrayBuffer());
+	const fontData = await fetch(
+		new URL(SITE_URL + '/assets/NanumPenScript-Regular.ttf', import.meta.url),
+	  ).then((res) => res.arrayBuffer());
 
 	try {
 		const { searchParams } = new URL(request.url);
@@ -54,7 +54,7 @@ export async function GET(request: Request) {
 			(
 				<div
 					style={{
-						fontFamily: 'Arial, Inter, "Material Icons"',
+						fontFamily: 'Nanum Pen, Inter, "Material Icons"',
 						fontSize: 40,
 						color: 'black',
 						background: '#1e293b',
@@ -71,7 +71,7 @@ export async function GET(request: Request) {
 				>
 					<div
 						style={{
-							fontFamily: 'Arial, Inter, "Material Icons"',
+							fontFamily: 'Nanum Pen, Inter, "Material Icons"',
 							fontSize: 40,
 							fontStyle: 'normal',
 							fontWeight: 700,
@@ -164,7 +164,7 @@ export async function GET(request: Request) {
 							justifyContent: 'space-between',
 							alignItems: 'center',
 							width: '100%',
-							fontFamily: 'Arial, Inter, "Material Icons"',
+							fontFamily: 'Nanum Pen, Inter, "Material Icons"',
 							fontSize: 20,
 							fontStyle: 'normal',
 							letterSpacing: '-0.025em',
@@ -186,13 +186,13 @@ export async function GET(request: Request) {
 			{
 				width: 960,
 				height: 960,
-				// fonts: [
-				// 	{
-				// 	  name: 'Geist',
-				// 	  data: fontData,
-				// 	  style: 'normal',
-				// 	},
-				//   ],
+				fonts: [
+					{
+					  name: 'Nanum Pen',
+					  data: fontData,
+					  style: 'normal',
+					},
+				  ],
 			},
 		);
 	} catch (e: any) {
