@@ -84,7 +84,7 @@ export async function GET(request: Request) {
 						Leaderboard
 					</div>
 
-					<div tw="flex w-full text-4xl">
+					<div tw="flex w-full">
 						<div tw="flex bg-white shadow-lg rounded-lg my-6">
 							<table tw="w-full flex flex-col rounded-lg">
 								<thead tw="flex">
