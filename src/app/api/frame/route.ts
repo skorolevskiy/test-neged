@@ -61,10 +61,12 @@ export async function POST(req: NextRequest): Promise<Response> {
 				await updateRef(refFid_new);
 			}
 		} else {
+
 			refFid = User.refFid;
 			spins = User.dailySpins;
 			dateString = User.lastSpin;
 			refCount = User.refCount;
+			
 		}
 
 		const today: string = new Date().toLocaleString().split(',')[0];
