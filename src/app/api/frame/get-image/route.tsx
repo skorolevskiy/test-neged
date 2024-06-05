@@ -57,7 +57,7 @@ export async function GET(request: Request) {
 						fontFamily: 'Nanum Pen, Inter, "Material Icons"',
 						fontSize: 40,
 						color: 'black',
-						background: '#1e293b',
+						background: '#fff',
 						width: '100%',
 						height: '100%',
 						padding: '20px 50px',
@@ -75,7 +75,7 @@ export async function GET(request: Request) {
 							fontSize: 60,
 							fontStyle: 'normal',
 							fontWeight: 700,
-							color: 'white',
+							color: 'black',
 							lineHeight: 1,
 							whiteSpace: 'pre-wrap',
 						}}
@@ -167,7 +167,7 @@ export async function GET(request: Request) {
 							fontSize: 30,
 							fontStyle: 'normal',
 							letterSpacing: '-0.025em',
-							color: 'white',
+							color: 'black',
 							lineHeight: 1.4,
 							whiteSpace: 'pre-wrap',
 						}}
