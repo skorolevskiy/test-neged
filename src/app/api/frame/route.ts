@@ -95,8 +95,6 @@ export async function POST(req: NextRequest): Promise<Response> {
 		// 	return getResponse(ResponseType.RECAST);
 		// }
 
-		
-
 		return getResponse(ResponseType.SUCCESS);
 	} catch (error) {
 		console.error(error);
@@ -113,8 +111,8 @@ enum ResponseType {
 
 function getResponse(type: ResponseType) {
 	const IMAGE = {
-		[ResponseType.SUCCESS]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/GREERING%20RAZ%201.png',
-		[ResponseType.RECAST]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/LQS.png',
+		[ResponseType.SUCCESS]: 'https://gateway.lighthouse.storage/ipfs/QmYy8TSLfACCpoUcxCvwN49n6h5MCmcfFDjZCRMVgT89QK',
+		[ResponseType.RECAST]: 'https://gateway.lighthouse.storage/ipfs/QmXT5a2MFGrNudfnyfaEEWRRRuYc5ZysGY8MBBj6FZeZPN',
 		[ResponseType.NO_ADDRESS]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/CONNECT.png',
 		[ResponseType.ERROR]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/ERROR.png',
 	}[type];
