@@ -49,17 +49,17 @@ export async function POST(req: NextRequest): Promise<Response> {
 					await updatePointsSpins(fid, 500);
 					spins--;
 					console.warn('+500');
-					return getResponse(ResponseType.IMAGE_1000);
+					return getResponse(ResponseType.IMAGE_500);
 				case 4:
 					await updatePointsSpins(fid, 1000);
 					spins--;
 					console.warn('+1000');
-					return getResponse(ResponseType.IMAGE_3000);
+					return getResponse(ResponseType.IMAGE_1000);
 				case 5:
 					await updatePointsSpins(fid, 3000);
 					spins--;
 					console.warn('+3000');
-					return getResponse(ResponseType.IMAGE_5000);
+					return getResponse(ResponseType.IMAGE_3000);
 				case 6:
 					await updatePointsSpins(fid, 5000);
 					spins--;
