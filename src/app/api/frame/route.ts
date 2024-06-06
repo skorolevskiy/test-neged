@@ -46,7 +46,7 @@ export async function POST(req: NextRequest): Promise<Response> {
 
 		const fid_new = status?.action?.interactor?.fid ? JSON.stringify(status.action.interactor.fid) : null;
 		const username_new = status?.action?.interactor?.username ? JSON.stringify(status.action.interactor.username) : null;
-		const refFid_new = status?.action?.cast?.author?.fid ? JSON.stringify(status?.action?.cast?.author?.fid) : '18850';
+		const refFid_new = status?.action?.cast?.author?.fid ? JSON.stringify(status?.action?.cast?.author?.fid) : '398355';
 		const wallet = status?.action?.interactor?.verifications?.[0] ? status.action.interactor.verifications?.[0] : null;
 
 		const User = await getUser(fid_new);
