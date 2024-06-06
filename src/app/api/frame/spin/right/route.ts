@@ -122,6 +122,8 @@ function getResponse(type: ResponseType) {
 	  type === ResponseType.SPIN_OUT;
 	// const successRetry = 
 	//   type === ResponseType.SUCCESS;
+	const textForRef = 'I%27m%20in%20the%20negeD%20Magic%20Hat%20Game%21%20%F0%9F%94%84%F0%9F%8E%A9%F0%9F%AA%84%0A%0A%F0%9F%8E%81%20Over%205%2C000%20prize%20spots%20up%20for%20grabs%20%0A%0AJoin%20the%20fun%20with%20%40neged';
+
 	return new NextResponse(`<!DOCTYPE html><html><head>
     <meta property="fc:frame" content="vNext" />
     <meta property="fc:frame:image" content="${IMAGE}" />
@@ -132,7 +134,7 @@ function getResponse(type: ResponseType) {
 		? `
 		<meta name="fc:frame:button:1" content="Get more Hats" />
     	<meta name="fc:frame:button:1:action" content="link" />
-    	<meta name="fc:frame:button:1:target" content="https://warpcast.com/~/compose?text=%F0%9F%8C%80%20Cast%20and%20get%203%20free%20spins%20to%20earn%20points.%20Points%20will%20be%20exchanged%20for%20tokens%20at%20the%20end%20of%20the%201st%20season.%20%0A%0A%F0%9F%AB%82%20Get%203%20more%20spins%20for%20each%20friend%20you%20invite.%20Read%20the%20%C2%ABRules%C2%BB%0Asection%20to%20learn%20more.%0A%0A%E2%98%80%EF%B8%8F%20Enter%20Onchain%20Summer%20with%20%2Fpill&embeds[]=${SITE_URL}/" />
+    	<meta name="fc:frame:button:1:target" content="https://warpcast.com/~/compose?text=${textForRef}&embeds[]=${SITE_URL}/" />
 
 		<meta name="fc:frame:button:2" content="↩️Back" />
 		<meta name="fc:frame:button:2:action" content="post" />
@@ -150,7 +152,11 @@ function getResponse(type: ResponseType) {
 
 		<meta name="fc:frame:button:3" content="Get more Hats" />
     	<meta name="fc:frame:button:3:action" content="link" />
-    	<meta name="fc:frame:button:3:target" content="https://warpcast.com/~/compose?text=%F0%9F%8C%80%20Cast%20and%20get%203%20free%20spins%20to%20earn%20points.%20Points%20will%20be%20exchanged%20for%20tokens%20at%20the%20end%20of%20the%201st%20season.%20%0A%0A%F0%9F%AB%82%20Get%203%20more%20spins%20for%20each%20friend%20you%20invite.%20Read%20the%20%C2%ABRules%C2%BB%0Asection%20to%20learn%20more.%0A%0A%E2%98%80%EF%B8%8F%20Enter%20Onchain%20Summer%20with%20%2Fpill&embeds[]=${SITE_URL}/" />
+    	<meta name="fc:frame:button:3:target" content="https://warpcast.com/~/compose?text=${textForRef}&embeds[]=${SITE_URL}/" />
+		
+		<meta name="fc:frame:button:4" content="↩️Back" />
+		<meta name="fc:frame:button:4:action" content="post" />
+		<meta name="fc:frame:button:4:target" content="${SITE_URL}/api/frame/" />
 		`
 	}
 
