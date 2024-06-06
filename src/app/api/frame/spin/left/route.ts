@@ -106,7 +106,7 @@ enum ResponseType {
 
 function getResponse(type: ResponseType) {
 	const IMAGE = {
-		[ResponseType.SUCCESS]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/GREERING%20RAZ%201.png',
+		[ResponseType.SUCCESS]: 'https://gateway.lighthouse.storage/ipfs/QmSAFubbQtfb6CUfrHdJpCRtNuT317nw1YCmcZefNEe4QT',
 		[ResponseType.IMAGE_100]: 'https://gateway.lighthouse.storage/ipfs/QmaB9wghmcaqgT9tJYvc3jigrse3fYao68DyeVcuuTxJ8J/L100.gif',
 		[ResponseType.IMAGE_250]: 'https://gateway.lighthouse.storage/ipfs/QmaB9wghmcaqgT9tJYvc3jigrse3fYao68DyeVcuuTxJ8J/L250.gif',
 		[ResponseType.IMAGE_500]: 'https://gateway.lighthouse.storage/ipfs/QmaB9wghmcaqgT9tJYvc3jigrse3fYao68DyeVcuuTxJ8J/L500.gif',

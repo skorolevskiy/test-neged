@@ -111,8 +111,8 @@ enum ResponseType {
 
 function getResponse(type: ResponseType) {
 	const IMAGE = {
-		[ResponseType.SUCCESS]: 'https://gateway.lighthouse.storage/ipfs/QmYy8TSLfACCpoUcxCvwN49n6h5MCmcfFDjZCRMVgT89QK',
-		[ResponseType.RECAST]: 'https://gateway.lighthouse.storage/ipfs/QmXT5a2MFGrNudfnyfaEEWRRRuYc5ZysGY8MBBj6FZeZPN',
+		[ResponseType.SUCCESS]: 'https://gateway.lighthouse.storage/ipfs/QmSAFubbQtfb6CUfrHdJpCRtNuT317nw1YCmcZefNEe4QT',
+		[ResponseType.RECAST]: 'https://gateway.lighthouse.storage/ipfs/QmQmF6v1HjmmReo4uSQFuuF2kbtFybHXc84j61eqKwLSG2',
 		[ResponseType.NO_ADDRESS]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/CONNECT.png',
 		[ResponseType.ERROR]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/ERROR.png',
 	}[type];
