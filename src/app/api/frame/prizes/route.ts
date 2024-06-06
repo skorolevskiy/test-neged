@@ -30,9 +30,9 @@ enum ResponseType {
 
 function getResponse(type: ResponseType) {
 	const IMAGE = {
-		[ResponseType.SUCCESS]: 'status/success.png',
-		[ResponseType.NO_ADDRESS]: 'status/no-address.png',
-		[ResponseType.ERROR]: 'status/error.png',
+		[ResponseType.SUCCESS]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/GREERING%20RAZ%201.png',
+		[ResponseType.NO_ADDRESS]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/CONNECT.png',
+		[ResponseType.ERROR]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/ERROR.png',
 	}[type];
 	// const shouldRetry =
 	//   type === ResponseType.ERROR || type === ResponseType.RECAST;
@@ -40,7 +40,7 @@ function getResponse(type: ResponseType) {
 	//   type === ResponseType.SUCCESS;
 	return new NextResponse(`<!DOCTYPE html><html><head>
     <meta property="fc:frame" content="vNext" />
-    <meta property="fc:frame:image" content="${SITE_URL}/status/prizes.png" />
+    <meta property="fc:frame:image" content="https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/PRIZES%20RAZ.png" />
     <meta property="fc:frame:image:aspect_ratio" content="1:1" />
     <meta property="fc:frame:post_url" content="${SITE_URL}/api/frame" />
 

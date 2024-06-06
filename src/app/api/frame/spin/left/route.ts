@@ -106,16 +106,16 @@ enum ResponseType {
 
 function getResponse(type: ResponseType) {
 	const IMAGE = {
-		[ResponseType.SUCCESS]: 'status/success.png',
-		[ResponseType.IMAGE_100]: 'status/100.png',
-		[ResponseType.IMAGE_250]: 'status/250.png',
-		[ResponseType.IMAGE_500]: 'status/500.png',
-		[ResponseType.IMAGE_1000]: 'status/1000.png',
-		[ResponseType.IMAGE_3000]: 'status/3000.png',
-		[ResponseType.IMAGE_5000]: 'status/5000.png',
-		[ResponseType.IMAGE_10000]: 'status/10000.png',
-		[ResponseType.ERROR]: 'status/error.png',
-		[ResponseType.SPIN_OUT]: 'status/spin-out.png'
+		[ResponseType.SUCCESS]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/GREERING%20RAZ%201.png',
+		[ResponseType.IMAGE_100]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/L100.gif',
+		[ResponseType.IMAGE_250]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/L250.gif',
+		[ResponseType.IMAGE_500]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/L500.gif',
+		[ResponseType.IMAGE_1000]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/L1000.gif',
+		[ResponseType.IMAGE_3000]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/L3000.gif',
+		[ResponseType.IMAGE_5000]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/L5000.gif',
+		[ResponseType.IMAGE_10000]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/L10000.gif',
+		[ResponseType.ERROR]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/ERROR.png',
+		[ResponseType.SPIN_OUT]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/ENLIS.png'
 	}[type];
 	const shouldRetry =
 	  type === ResponseType.SPIN_OUT;
@@ -123,7 +123,7 @@ function getResponse(type: ResponseType) {
 	//   type === ResponseType.SUCCESS;
 	return new NextResponse(`<!DOCTYPE html><html><head>
     <meta property="fc:frame" content="vNext" />
-    <meta property="fc:frame:image" content="${SITE_URL}/${IMAGE}" />
+    <meta property="fc:frame:image" content="${IMAGE}" />
 	<meta property="fc:frame:image:aspect_ratio" content="1:1" />
     <meta property="fc:frame:post_url" content="${SITE_URL}/api/frame" />
 

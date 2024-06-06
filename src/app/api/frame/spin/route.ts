@@ -31,12 +31,10 @@ export async function POST(req: NextRequest): Promise<Response> {
 			points = User.points;
 		}
 
-		if (spins > 0) {
-			
-			}
-		 else {
-				return getResponse(ResponseType.SPIN_OUT);
-			}
+		if (spins > 0) {}
+		else {
+			return getResponse(ResponseType.SPIN_OUT);
+		}
 
 		return getResponse(ResponseType.CHOICE);
 
