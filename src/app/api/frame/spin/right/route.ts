@@ -108,13 +108,13 @@ enum ResponseType {
 function getResponse(type: ResponseType) {
 	const IMAGE = {
 		[ResponseType.SUCCESS]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/GREERING%20RAZ%201.png',
-		[ResponseType.IMAGE_100]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/R100.gif',
-		[ResponseType.IMAGE_250]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/R250.gif',
-		[ResponseType.IMAGE_500]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/R500.gif',
-		[ResponseType.IMAGE_1000]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/R1000.gif',
-		[ResponseType.IMAGE_3000]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/R3000.gif',
-		[ResponseType.IMAGE_5000]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/R5000.gif',
-		[ResponseType.IMAGE_10000]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/R10000.gif',
+		[ResponseType.IMAGE_100]: 'https://gateway.lighthouse.storage/ipfs/QmaB9wghmcaqgT9tJYvc3jigrse3fYao68DyeVcuuTxJ8J/R100.gif',
+		[ResponseType.IMAGE_250]: 'https://gateway.lighthouse.storage/ipfs/QmaB9wghmcaqgT9tJYvc3jigrse3fYao68DyeVcuuTxJ8J/R250.gif',
+		[ResponseType.IMAGE_500]: 'https://gateway.lighthouse.storage/ipfs/QmaB9wghmcaqgT9tJYvc3jigrse3fYao68DyeVcuuTxJ8J/R500.gif',
+		[ResponseType.IMAGE_1000]: 'https://gateway.lighthouse.storage/ipfs/QmaB9wghmcaqgT9tJYvc3jigrse3fYao68DyeVcuuTxJ8J/R1000.gif',
+		[ResponseType.IMAGE_3000]: 'https://gateway.lighthouse.storage/ipfs/QmaB9wghmcaqgT9tJYvc3jigrse3fYao68DyeVcuuTxJ8J/R3000.gif',
+		[ResponseType.IMAGE_5000]: 'https://gateway.lighthouse.storage/ipfs/QmaB9wghmcaqgT9tJYvc3jigrse3fYao68DyeVcuuTxJ8J/R5000.gif',
+		[ResponseType.IMAGE_10000]: 'https://gateway.lighthouse.storage/ipfs/QmaB9wghmcaqgT9tJYvc3jigrse3fYao68DyeVcuuTxJ8J/R10000.gif',
 		[ResponseType.ERROR]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/ERROR.png',
 		[ResponseType.SPIN_OUT]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/ENLIS.png'
 	}[type];

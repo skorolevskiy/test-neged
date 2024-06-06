@@ -106,11 +106,22 @@ export async function updateDate(fid: string | null, refCount: number) {
 		.execute()
 }
 
-export async function updateRef(fid: string | null) {
+export async function updateRefSpins(fid: string | null) {
 	await db
 		.updateTable('players')
 		.set((eb) => ({
+			refCount: eb('refCount', '+', 1),
 			dailySpins: eb('dailySpins', '+', 1),
+		}))
+		.where('fid', '=', fid)
+		.execute()
+}
+
+export async function updateRefCount(fid: string | null) {
+	await db
+		.updateTable('players')
+		.set((eb) => ({
+			refCount: eb('refCount', '+', 1),
 		}))
 		.where('fid', '=', fid)
 		.execute()

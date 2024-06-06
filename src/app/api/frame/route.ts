@@ -12,7 +12,7 @@ import {
 } from 'viem';
 
 let fid: string, points: number, spins: number, dateString: string, refFid: string, refCount: number;
-import { addUser, getUser, updateDate, updateRef } from './types'
+import { addUser, getUser, updateDate, updateRefSpins, updateRefCount } from './types'
 //const HAS_KV = !!process.env.KV_URL;
 const transport = http(process.env.RPC_URL);
 
@@ -58,7 +58,9 @@ export async function POST(req: NextRequest): Promise<Response> {
 			const UserRef = await getUser(refFid_new);
 			let refCount = UserRef.refCount;
 			if (refCount < 10) {
-				await updateRef(refFid_new);
+				await updateRefSpins(refFid_new);
+			} else {
+				await updateRefCount(refFid_new);
 			}
 		} else {
 
