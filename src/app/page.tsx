@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'Neged Hat Game [BETA]',
     other: FRAME_METADATA,
     openGraph: {
-        images: '/opengraph-image.jpg',
+        images: '/opengraph-image.png',
     },
     
 };
