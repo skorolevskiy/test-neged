@@ -37,37 +37,30 @@ export async function POST(req: NextRequest): Promise<Response> {
 			switch (randomNumber) {
 				case 1:
 					await updatePointsSpins(fid, 100);
-					spins--;
 					console.warn('+100');
 					return getResponse(ResponseType.IMAGE_100);
 				case 2:
 					await updatePointsSpins(fid, 250);
-					spins--;
 					console.warn('+250');
 					return getResponse(ResponseType.IMAGE_250);
 				case 3:
 					await updatePointsSpins(fid, 500);
-					spins--;
 					console.warn('+500');
 					return getResponse(ResponseType.IMAGE_500);
 				case 4:
 					await updatePointsSpins(fid, 1000);
-					spins--;
 					console.warn('+1000');
 					return getResponse(ResponseType.IMAGE_1000);
 				case 5:
 					await updatePointsSpins(fid, 3000);
-					spins--;
 					console.warn('+3000');
 					return getResponse(ResponseType.IMAGE_3000);
 				case 6:
 					await updatePointsSpins(fid, 5000);
-					spins--;
 					console.warn('+5000');
 					return getResponse(ResponseType.IMAGE_5000);
 				case 7:
 					await updatePointsSpins(fid, 10000);
-					spins--;
 					console.warn('+10000');
 					return getResponse(ResponseType.IMAGE_10000);
 			}
