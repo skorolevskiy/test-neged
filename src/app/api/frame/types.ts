@@ -163,3 +163,13 @@ export async function getUserPosition(fid: string | null) {
 		return false;
 	}
 }
+
+export async function getAllUsers() {
+	let data: any;
+	data = await db
+			.selectFrom('players')
+			.selectAll()
+			.orderBy('points desc')
+			.execute();
+	return data;
+}
