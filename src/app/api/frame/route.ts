@@ -131,9 +131,7 @@ function getResponse(type: ResponseType) {
 				`<meta property="fc:frame:button:1" content="Try again" />
 				`
 			: 
-				`<meta name="fc:frame:button:1" content="${spins} Hats" />
-				<meta name="fc:frame:button:1:action" content="post" />
-				<meta name="fc:frame:button:1:target" content="${SITE_URL}/api/frame/spin/" />
+				`
 			
 				<meta name="fc:frame:button:2" content="Rules" />
 				<meta name="fc:frame:button:2:action" content="post" />
