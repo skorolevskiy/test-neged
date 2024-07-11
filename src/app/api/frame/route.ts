@@ -111,15 +111,14 @@ enum ResponseType {
 
 function getResponse(type: ResponseType) {
 	const IMAGE = {
-		[ResponseType.SUCCESS]: 'https://gateway.lighthouse.storage/ipfs/QmSAFubbQtfb6CUfrHdJpCRtNuT317nw1YCmcZefNEe4QT',
-		[ResponseType.RECAST]: 'https://gateway.lighthouse.storage/ipfs/QmQmF6v1HjmmReo4uSQFuuF2kbtFybHXc84j61eqKwLSG2',
+		[ResponseType.SUCCESS]: SITE_URL + '/status/success.png',
+		[ResponseType.RECAST]: SITE_URL + '/status/recast.png',
 		[ResponseType.NO_ADDRESS]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/CONNECT.png',
 		[ResponseType.ERROR]: 'https://gateway.lighthouse.storage/ipfs/QmNY7ESQtnHdFre4NAxH869MWL536mng8yhtMvRomsikfa/ERROR.png',
 	}[type];
 	const shouldRetry =
 		type === ResponseType.ERROR || type === ResponseType.RECAST;
-	// const successRetry = 
-	//   type === ResponseType.SUCCESS;
+	
 	return new NextResponse(`<!DOCTYPE html><html><head>
     <meta property="fc:frame" content="vNext" />
     <meta property="fc:frame:image" content="${IMAGE}" />
