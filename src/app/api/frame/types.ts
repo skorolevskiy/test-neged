@@ -2,7 +2,7 @@ import * as kysely from 'kysely'
 import { createKysely } from '@vercel/postgres-kysely'
 import { sql } from '@vercel/postgres'
 
-export interface PlayersTable {
+export interface hatsTable {
 	id: kysely.Generated<number>
 	fid: string | null
 	username: string | null
@@ -18,7 +18,7 @@ export interface PlayersTable {
 
 // Keys of this interface are table names.
 export interface Database {
-	players: PlayersTable
+	hats: hatsTable
 }
 
 export const db = createKysely<Database>()
@@ -29,13 +29,13 @@ export async function getUser(fid: string | null): Promise<any> {
 
 	try {
 		data = await db
-			.selectFrom('players')
+			.selectFrom('hats')
 			.where('fid', '=', fid)
 			.selectAll()
 			.executeTakeFirst();
 		return data; // Data fetched successfully
 	} catch (e: any) {
-		if (e.message.includes('relation "players" does not exist')) {
+		if (e.message.includes('relation "hats" does not exist')) {
 			console.warn(
 				'Table does not exist, creating and seeding it with dummy data now...'
 			);
@@ -52,7 +52,7 @@ export async function getUser(fid: string | null): Promise<any> {
 export async function addUser(fid: string | null, username: string | null, wallet: string | null, ref_fid: string | null) {
 
 	const result = await db
-		.insertInto('players')
+		.insertInto('hats')
 		.values({
 			fid: fid ? fid : null,
 			username: username ? username : null,
@@ -69,7 +69,7 @@ export async function addUser(fid: string | null, username: string | null, walle
 
 export async function updatePointsSpins(fid: string | null, points: number) {
 	await db
-		.updateTable('players')
+		.updateTable('hats')
 		.set((eb) => ({
 			points: eb('points', '+', points),
 			dailySpins: eb('dailySpins', '-', 1)
@@ -80,7 +80,7 @@ export async function updatePointsSpins(fid: string | null, points: number) {
 
 export async function updatePoints(fid: string | null, points: number) {
 	await db
-		.updateTable('players')
+		.updateTable('hats')
 		.set((eb) => ({
 			points: eb('points', '+', points),
 		}))
@@ -97,7 +97,7 @@ export async function updateDate(fid: string | null, refCount: number) {
 		spinsCount = spinsCount + refCount;
 	}
 	await db
-		.updateTable('players')
+		.updateTable('hats')
 		.set((eb) => ({
 			dailySpins: spinsCount,
 			lastSpin: new Date().toLocaleString(),
@@ -108,7 +108,7 @@ export async function updateDate(fid: string | null, refCount: number) {
 
 export async function updateRefSpins(fid: string | null) {
 	await db
-		.updateTable('players')
+		.updateTable('hats')
 		.set((eb) => ({
 			refCount: eb('refCount', '+', 1),
 			dailySpins: eb('dailySpins', '+', 1),
@@ -119,7 +119,7 @@ export async function updateRefSpins(fid: string | null) {
 
 export async function updateRefCount(fid: string | null) {
 	await db
-		.updateTable('players')
+		.updateTable('hats')
 		.set((eb) => ({
 			refCount: eb('refCount', '+', 1),
 		}))
@@ -127,11 +127,11 @@ export async function updateRefCount(fid: string | null) {
 		.execute()
 }
 
-export async function getTopPlayers(): Promise<any> {
+export async function getTophats(): Promise<any> {
 	let data: any;
 	try {
 		data = await db
-			.selectFrom('players')
+			.selectFrom('hats')
 			.select(['fid', 'username', 'points', 'refCount'])
 			.orderBy('points desc')
 			.limit(10)
@@ -147,13 +147,13 @@ export async function getUserPosition(fid: string | null) {
 	let data: any;
 	try {
 		const userPoints = await db
-			.selectFrom('players')
+			.selectFrom('hats')
 			.select('points')
 			.where('fid', '=', fid)
 			.executeTakeFirst();
 
 		data = await db
-			.selectFrom('players')
+			.selectFrom('hats')
 			.select(db.fn.countAll().as('count'))
 			.where('points', '>', userPoints?.points ?? 0)
 			.execute();
@@ -167,7 +167,7 @@ export async function getUserPosition(fid: string | null) {
 export async function getAllUsers() {
 	let data: any;
 	data = await db
-			.selectFrom('players')
+			.selectFrom('hats')
 			.selectAll()
 			.orderBy('points desc')
 			.execute();
