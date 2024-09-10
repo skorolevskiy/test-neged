@@ -127,7 +127,7 @@ export async function updateRefCount(fid: string | null) {
 		.execute()
 }
 
-export async function getTophats(): Promise<any> {
+export async function getTopPlayers(): Promise<any> {
 	let data: any;
 	try {
 		data = await db
